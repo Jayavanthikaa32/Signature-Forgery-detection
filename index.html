@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signature Forgery Detection</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #3498DB;
+			text-align: center;
+			color: #FFFFFF;
+		}
+
+		h1 {
+			font-size: 28px;
+			color: #FFFFFF;
+			margin: 20px 0;
+		}
+
+		form {
+			background-color: #FFFFFF;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 5px #CCCCCC;
+			margin: 20px auto;
+			max-width: 800px;
+			text-align: left;
+		}
+
+		input[type="file"] {
+			display: block;
+			margin: 10px 0;
+		}
+
+		input[type="submit"] {
+			background-color: #2E86C1;
+			color: #FFFFFF;
+			border: none;
+			padding: 10px 20px;
+			font-size: 18px;
+			font-weight: bold;
+			border-radius: 5px;
+			cursor: pointer;
+            
+		}
+
+		img {
+			display: block;
+			margin: 20px auto;
+			max-width: 400px;
+			border: 1px solid #CCCCCC;
+			padding: 5px;
+			border-radius: 5px;
+			box-shadow: 0 0 5px #CCCCCC;
+		}
+
+		.result {
+			font-size: 24px;
+			margin: 20px 0;
+			text-align: center;
+		}
+
+		.result.success {
+			color: #008000;
+		}
+
+		.result.failure {
+			color: #FF0000;
+		}
+	</style>
+</head>
+<body>
+	<h1>Signature Forgery Detection</h1>
+
+	<form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+	    <input type="file" name="file1"><br><br>
+	    <input type="file" name="file2"><br><br>
+	    <input type="submit" value="Upload">
+	</form>
+
+	    
+	<img src="{{ url_for('serve_image', filename= fname1) }}">
+	
+	<img src="{{ url_for('serve_image', filename=fname2) }}">
+	
+	<div class="result {{ result_class }}">
+		{{ msg }}
+	</div>
+</body>
+</html>
